@@ -5,14 +5,15 @@
     "prettier",
     "plugin:import/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["import", "unused-imports"],
+  "plugins": ["import", "unused-imports", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
-    "no-restricted-imports": ["error", { "patterns": ["./", "../"] }], // 相対パスimportの禁止
+    "no-restricted-imports": ["error", { "patterns": ["./", "../"] }], // 相対パスのimport
     "import/order": [
       "error",
       {
