@@ -1,4 +1,6 @@
 import '@/app/globals.css'
+import Footer from '@/components/usecase/Footer'
+import Header from '@/components/usecase/Header'
 
 import type { Metadata } from 'next'
 
@@ -13,8 +15,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='ja'>
-      <body>{children}</body>
+    <html lang='ja' className='h-full'>
+      <body className='h-full'>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
