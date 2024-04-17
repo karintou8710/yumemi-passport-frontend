@@ -1,3 +1,5 @@
+'use client'
+
 import { ComponentPropsWithoutRef } from 'react'
 
 type Props = Omit<ComponentPropsWithoutRef<'input'>, 'type'> & {
