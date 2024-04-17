@@ -812,6 +812,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/env@npm:^14.2.1":
+  version: 14.2.1
+  resolution: "@next/env@npm:14.2.1"
+  checksum: 10c0/c0c2cd3d94aab6454f7a2f88922e5968b82fafda98160f4cc1048c335b9e3d10d6d9095ac2ed2fc06b14dc83b596cfb205bcafa1139d81b0e93fa0670d1461ad
+  languageName: node
+  linkType: hard
+
 "@next/eslint-plugin-next@npm:14.1.4":
   version: 14.1.4
   resolution: "@next/eslint-plugin-next@npm:14.1.4"
@@ -6574,6 +6581,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "yumemi-passport-frontend@workspace:."
   dependencies:
+    "@next/env": "npm:^14.2.1"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
