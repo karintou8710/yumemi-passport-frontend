@@ -1,4 +1,5 @@
 import '@/app/globals.css'
+import RecoilProvider from '@/components/context/RecoilProvider'
 import Footer from '@/components/usecase/Footer'
 import Header from '@/components/usecase/Header'
 
@@ -16,10 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ja' className='h-full'>
-      <body className='h-full'>
-        <Header />
-        {children}
-        <Footer />
+      <body className='h-full bg-gray-100'>
+        <RecoilProvider>
+          <Header />
+          {children}
+          <Footer />
+        </RecoilProvider>
       </body>
     </html>
   )

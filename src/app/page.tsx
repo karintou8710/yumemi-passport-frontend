@@ -1,7 +1,9 @@
+import PrefectureChoice from '@/app/_TopPage/PrefectureChoice'
+
 export default async function TopPage() {
   return (
-    <main>
-      <p></p>
+    <main className='mx-auto mt-16 max-w-screen-lg rounded-md bg-white p-16'>
+      <PrefectureChoice />
     </main>
   )
 }
