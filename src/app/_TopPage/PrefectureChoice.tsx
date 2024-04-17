@@ -1,4 +1,4 @@
-import CheckBox from '@/components/atom/CheckBox'
+import RegionCheckBox from '@/app/_TopPage/RegionCheckBox'
 import { groupByRegion } from '@/lib/prefecture'
 import { fetchResasPrefectures } from '@/server/lib/api'
 
@@ -12,14 +12,20 @@ export default async function PrefectureChoice({ className }: Props) {
 
   return (
     <div className={className}>
-      <div className='mb-4'>
-        <h2 className='mb-2 text-xl'>北海道・東北</h2>
-        <div className='flex gap-6'>
-          {prefGroupByRegion.hokkaidoTohoku.map((v) => (
-            <CheckBox key={v.prefCode} label={v.prefName} />
-          ))}
-        </div>
-      </div>
+      <RegionCheckBox
+        title='北海道・東北'
+        prefectures={prefGroupByRegion.hokkaidoTohoku}
+        className='mb-6'
+      />
+      <RegionCheckBox title='関東' prefectures={prefGroupByRegion.kanto} className='mb-6' />
+      <RegionCheckBox title='中部' prefectures={prefGroupByRegion.tyubu} className='mb-6' />
+      <RegionCheckBox title='近畿' prefectures={prefGroupByRegion.kinki} className='mb-6' />
+      <RegionCheckBox
+        title='中国・四国'
+        prefectures={prefGroupByRegion.tyugokuSikoku}
+        className='mb-6'
+      />
+      <RegionCheckBox title='九州・沖縄' prefectures={prefGroupByRegion.kyusyuOkinawa} />
     </div>
   )
 }
