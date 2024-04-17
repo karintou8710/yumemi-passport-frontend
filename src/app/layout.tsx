@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ja' className='h-full'>
-      <body className='h-full'>
+      <body className='h-full bg-gray-100'>
         <Header />
         {children}
         <Footer />
