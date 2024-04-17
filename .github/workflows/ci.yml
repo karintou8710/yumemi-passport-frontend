@@ -6,6 +6,8 @@ on:
 jobs:
   client:
     runs-on: ubuntu-latest
+    environment:
+      name: tests
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
