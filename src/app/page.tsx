@@ -1,4 +1,4 @@
-export default function Home() {
+export default async function TopPage() {
   return (
     <main>
       <p></p>
