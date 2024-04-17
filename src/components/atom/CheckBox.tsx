@@ -12,7 +12,7 @@ export default function CheckBox({ label, ...props }: Props) {
       <div>
         <input type='checkbox' className='peer hidden' {...props} />
         <div
-          className='relative size-6 rounded border-2
+          className='relative size-6 rounded border-2 border-gray-400
                     peer-checked:border-none
                   peer-checked:bg-lime-400
                     peer-checked:before:absolute
