@@ -1,3 +1,5 @@
+'use server'
+
 import { fetchResasPopulationComposition } from '@/server/lib/api'
 import { PopulationCompositionParams } from '@/types/api'
 

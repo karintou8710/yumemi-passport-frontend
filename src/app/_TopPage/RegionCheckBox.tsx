@@ -3,6 +3,7 @@
 import { useCallback } from 'react'
 
 import CheckBox from '@/components/atom/CheckBox'
+import { fetchResasPopulationCompositionAction } from '@/server/actions/prefecture'
 import { selectedPrefListState } from '@/store'
 import { ResasPrefecture } from '@/types/api'
 import { useRecoilState } from 'recoil'
@@ -17,13 +18,25 @@ export default function RegionCheckBox({ title, prefectures, className }: Props)
   const [_, setSelectedPrefList] = useRecoilState(selectedPrefListState)
 
   const handleChange = useCallback(
-    (isChecked: boolean, prefCode: number) => {
+    async (isChecked: boolean, prefCode: number, prefName: string) => {
       if (isChecked) {
         // ONにする
-        setSelectedPrefList((prev) => [...prev, prefCode])
+
+        // Server Actionで県データを取得(API KEYを隠すため)
+        const res = await fetchResasPopulationCompositionAction({
+          prefCode: prefCode,
+        })
+        setSelectedPrefList((prev) => [
+          ...prev,
+          {
+            prefCode: prefCode,
+            prefName: prefName,
+            ...res.result,
+          },
+        ])
       } else {
         // OFFにする
-        setSelectedPrefList((prev) => prev.filter((v) => v !== prefCode))
+        setSelectedPrefList((prev) => prev.filter((v) => v.prefCode !== prefCode))
       }
     },
     [setSelectedPrefList],
@@ -39,7 +52,7 @@ export default function RegionCheckBox({ title, prefectures, className }: Props)
           <CheckBox
             key={v.prefCode}
             label={v.prefName}
-            onChange={(e) => handleChange(e.target.checked, v.prefCode)}
+            onChange={(e) => handleChange(e.target.checked, v.prefCode, v.prefName)}
           />
         ))}
       </div>
