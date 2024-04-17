@@ -5,6 +5,7 @@ export type PopulationCompositionParams = {
 }
 
 export type ResasResponseBase<T> = {
+  statusCode?: string
   message: string | null
   result: T
 }

@@ -1,7 +1,14 @@
-import { PopulationCompositionParams, ResasResponsePopComp, ResasResponsePref } from '@/types/api'
+import {
+  PopulationCompositionParams,
+  ResasResponseBase,
+  ResasResponsePopComp,
+  ResasResponsePref,
+} from '@/types/api'
 
 const RESAS_API_ENDPOINT = 'https://opendata.resas-portal.go.jp'
 const RESAS_API_KEY = process.env.RESAS_API_KEY ?? ''
+
+/* RESAS APIの400系のエラーはStatus Codeが200で、情報がJSONでレスポンスされる */
 
 export const fetchResasPrefectures = async (): Promise<ResasResponsePref> => {
   const res = await fetch(`${RESAS_API_ENDPOINT}/api/v1/prefectures`, {
@@ -14,9 +21,10 @@ export const fetchResasPrefectures = async (): Promise<ResasResponsePref> => {
     throw new Error('Http Error')
   }
 
-  const data = await res.json()
+  const data: ResasResponseBase<unknown> = await res.json()
+  if (data.message) throw new Error(data.message)
 
-  return data
+  return data as ResasResponsePref
 }
 
 export const fetchResasPopulationComposition = async (
@@ -38,7 +46,8 @@ export const fetchResasPopulationComposition = async (
     throw new Error('Http Error')
   }
 
-  const data = await res.json()
+  const data: ResasResponseBase<unknown> = await res.json()
+  if (data.message) throw new Error(data.message)
 
-  return data
+  return data as ResasResponsePopComp
 }
