@@ -24,5 +24,9 @@ jobs:
         run: yarn lint:prettier
       - name: jest
         run: yarn test
+        env:
+          RESAS_API_KEY: ${{ secrets.RESAS_API_KEY }}
       - name: build test
         run: yarn build
+        env:
+          RESAS_API_KEY: ${{ secrets.RESAS_API_KEY }}
