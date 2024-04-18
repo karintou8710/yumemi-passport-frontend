@@ -18,6 +18,11 @@ export const selectedPrefListState = atom<ResasPopulationCompositionWithPref[]>(
   default: [],
 })
 
+export const isLoadingState = atom<boolean>({
+  key: 'isLoading',
+  default: false,
+})
+
 export const selectedTotalPrefListSelector = selector<ResasTotalPopulationWithPref[]>({
   key: 'selectedTotalPrefListSelector',
   get: ({ get }) => {

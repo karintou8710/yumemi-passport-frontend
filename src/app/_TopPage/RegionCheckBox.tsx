@@ -4,9 +4,9 @@ import { useCallback, useEffect } from 'react'
 
 import CheckBox from '@/components/atom/CheckBox'
 import { fetchResasPopulationCompositionAction } from '@/server/actions/prefecture'
-import { selectedPrefListState } from '@/store'
+import { isLoadingState, selectedPrefListState } from '@/store'
 import { ResasPrefecture } from '@/types/api'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 
 type Props = {
   title: string
@@ -21,7 +21,8 @@ export default function RegionCheckBox({
   defaultCheckedCode,
   className,
 }: Props) {
-  const [_, setSelectedPrefList] = useRecoilState(selectedPrefListState)
+  const setIsLoading = useSetRecoilState(isLoadingState)
+  const setSelectedPrefList = useSetRecoilState(selectedPrefListState)
 
   // 初回レンダリング時のみ発火
   useEffect(() => {
@@ -34,6 +35,7 @@ export default function RegionCheckBox({
         return
       }
 
+      setIsLoading(true)
       const res = await fetchResasPopulationCompositionAction({
         prefCode: defaultCheckedCode,
       })
@@ -45,6 +47,7 @@ export default function RegionCheckBox({
           ...res.result,
         },
       ])
+      setIsLoading(false)
     }
     fn()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -53,6 +56,9 @@ export default function RegionCheckBox({
     async (isChecked: boolean, prefCode: number, prefName: string) => {
       if (isChecked) {
         // ONにする
+
+        // チェックボックスとデータを同期するため、データ取得時はローディング画面を表示して操作不可能にする
+        setIsLoading(true)
 
         // Server Actionで県データを取得(API KEYを隠すため)
         const res = await fetchResasPopulationCompositionAction({
@@ -66,12 +72,14 @@ export default function RegionCheckBox({
             ...res.result,
           },
         ])
+
+        setIsLoading(false)
       } else {
         // OFFにする
         setSelectedPrefList((prev) => prev.filter((v) => v.prefCode !== prefCode))
       }
     },
-    [setSelectedPrefList],
+    [setSelectedPrefList, setIsLoading],
   )
 
   return (
