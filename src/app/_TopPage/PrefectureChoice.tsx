@@ -7,6 +7,10 @@ type Props = {
 }
 
 export default async function PrefectureChoice({ className }: Props) {
+  /*
+    都道府県データは変更されることが滅多にないため、Full Route Cacheでビルド時にキャッシュする。
+    仮に更新があった際は再ビルドになる。
+  */
   const prefectures = await fetchResasPrefectures()
   const prefGroupByRegion = groupByRegion(prefectures.result)
 
