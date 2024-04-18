@@ -1,3 +1,5 @@
+import { atom, selector } from 'recoil'
+
 import {
   ResasElderlyPopulationWithPref,
   ResasPopulationCompositionWithPref,
@@ -11,7 +13,6 @@ import {
   ResasWorkingPopulation,
   ResasYoungPopulation,
 } from '@/types/api'
-import { atom, selector } from 'recoil'
 
 export const selectedPrefListState = atom<ResasPopulationCompositionWithPref[]>({
   key: 'selectedPrefList',

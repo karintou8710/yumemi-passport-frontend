@@ -1,12 +1,12 @@
 'use client'
 
 import { useCallback, useEffect } from 'react'
+import { useSetRecoilState } from 'recoil'
 
 import CheckBox from '@/components/atom/CheckBox'
 import { fetchResasPopulationCompositionAction } from '@/server/actions/prefecture'
 import { isLoadingState, selectedPrefListState } from '@/store'
 import { ResasPrefecture } from '@/types/api'
-import { useSetRecoilState } from 'recoil'
 
 type Props = {
   title: string
