@@ -2,6 +2,7 @@ import '@/app/globals.css'
 import RecoilProvider from '@/components/context/RecoilProvider'
 import Footer from '@/components/usecase/Footer'
 import Header from '@/components/usecase/Header'
+import Loading from '@/components/usecase/Loading'
 
 import type { Metadata } from 'next'
 
@@ -22,6 +23,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Loading />
         </RecoilProvider>
       </body>
     </html>

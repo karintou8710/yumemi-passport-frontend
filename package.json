@@ -19,7 +19,11 @@
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "recoil": "^0.7.7"
+    "recharts": "^2.12.5",
+    "recoil": "^0.7.7",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^2.2.2",
+    "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
