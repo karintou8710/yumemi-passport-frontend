@@ -15,6 +15,7 @@ export default async function PrefectureChoice({ className }: Props) {
       <RegionCheckBox
         title='北海道・東北'
         prefectures={prefGroupByRegion.hokkaidoTohoku}
+        defaultCheckedCode={1} // 北海道
         className='mb-6'
       />
       <RegionCheckBox title='関東' prefectures={prefGroupByRegion.kanto} className='mb-6' />

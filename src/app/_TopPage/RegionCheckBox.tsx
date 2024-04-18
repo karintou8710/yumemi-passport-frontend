@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import CheckBox from '@/components/atom/CheckBox'
 import { fetchResasPopulationCompositionAction } from '@/server/actions/prefecture'
@@ -11,11 +11,43 @@ import { useRecoilState } from 'recoil'
 type Props = {
   title: string
   prefectures: ResasPrefecture[]
+  defaultCheckedCode?: number
   className?: string
 }
 
-export default function RegionCheckBox({ title, prefectures, className }: Props) {
+export default function RegionCheckBox({
+  title,
+  prefectures,
+  defaultCheckedCode,
+  className,
+}: Props) {
   const [_, setSelectedPrefList] = useRecoilState(selectedPrefListState)
+
+  // 初回レンダリング時のみ発火
+  useEffect(() => {
+    const fn = async () => {
+      // defaultCheckedCodeが存在する都道府県のIDか確認
+      if (
+        defaultCheckedCode == undefined ||
+        !prefectures.find((v) => v.prefCode === defaultCheckedCode)
+      ) {
+        return
+      }
+
+      const res = await fetchResasPopulationCompositionAction({
+        prefCode: defaultCheckedCode,
+      })
+      setSelectedPrefList((prev) => [
+        ...prev,
+        {
+          prefCode: defaultCheckedCode,
+          prefName: prefectures.find((v) => v.prefCode === defaultCheckedCode)?.prefName as string,
+          ...res.result,
+        },
+      ])
+    }
+    fn()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleChange = useCallback(
     async (isChecked: boolean, prefCode: number, prefName: string) => {
@@ -52,6 +84,7 @@ export default function RegionCheckBox({ title, prefectures, className }: Props)
           <CheckBox
             key={v.prefCode}
             label={v.prefName}
+            defaultChecked={defaultCheckedCode === v.prefCode}
             onChange={(e) => handleChange(e.target.checked, v.prefCode, v.prefName)}
           />
         ))}
