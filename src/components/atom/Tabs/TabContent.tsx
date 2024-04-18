@@ -1,8 +1,8 @@
 'use client'
 import { ReactNode, useContext } from 'react'
+import { tv } from 'tailwind-variants'
 
 import { TabContext } from '@/components/context/TabProvider'
-import { tv } from 'tailwind-variants'
 
 const tabContentStyle = tv({
   base: '',

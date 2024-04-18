@@ -1,8 +1,8 @@
 'use client'
 import { ReactNode, useState } from 'react'
+import { tv } from 'tailwind-variants'
 
 import TabProvider from '@/components/context/TabProvider'
-import { tv } from 'tailwind-variants'
 
 const tabsStyle = tv({
   base: '',
