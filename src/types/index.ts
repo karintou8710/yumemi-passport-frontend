@@ -1,4 +1,4 @@
-import { ResasPopulationComposition, ResasPrefecture } from '@/types/api'
+import { ResasPopulationComposition, ResasPrefecture, ResasTotalPopulation } from '@/types/api'
 
 export type PrefectureGroupByRegion = {
   hokkaidoTohoku: ResasPrefecture[]
@@ -10,6 +10,11 @@ export type PrefectureGroupByRegion = {
 }
 
 export type ResasPopulationCompositionWithPref = ResasPopulationComposition & {
+  prefCode: number
+  prefName: string
+}
+
+export type ResasTotalPopulationWithPref = ResasTotalPopulation & {
   prefCode: number
   prefName: string
 }

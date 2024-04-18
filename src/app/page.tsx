@@ -5,7 +5,7 @@ export default async function TopPage() {
   return (
     <main className='mx-auto mt-16 max-w-screen-lg rounded-md bg-white p-16'>
       <PrefectureChoice />
-      <ChartView />
+      <ChartView className='mt-16' />
     </main>
   )
 }
