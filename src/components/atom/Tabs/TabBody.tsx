@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-
 import { tv } from 'tailwind-variants'
 
 const tabBodyStyle = tv({

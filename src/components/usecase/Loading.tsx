@@ -1,7 +1,8 @@
 'use client'
 
-import { isLoadingState } from '@/store'
 import { useRecoilValue } from 'recoil'
+
+import { isLoadingState } from '@/store'
 
 export default function Loading() {
   const isLoading = useRecoilValue(isLoadingState)

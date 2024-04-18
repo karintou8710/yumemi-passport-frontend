@@ -1,12 +1,5 @@
 'use client'
 
-import { useScreenDetector } from '@/hooks/useScreenDetector'
-import {
-  selectedElderlyPrefListSelector,
-  selectedTotalPrefListSelector,
-  selectedWorkingPrefListSelector,
-  selectedYoungPrefListSelector,
-} from '@/store'
 import {
   CartesianGrid,
   Label,
@@ -19,6 +12,14 @@ import {
   YAxis,
 } from 'recharts'
 import { useRecoilValue } from 'recoil'
+
+import { useScreenDetector } from '@/hooks/useScreenDetector'
+import {
+  selectedElderlyPrefListSelector,
+  selectedTotalPrefListSelector,
+  selectedWorkingPrefListSelector,
+  selectedYoungPrefListSelector,
+} from '@/store'
 
 const LINE_STROKE_COLORS = [
   '#f97316',

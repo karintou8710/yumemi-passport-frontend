@@ -1,8 +1,8 @@
 'use client'
 import { ReactNode, useCallback, useContext } from 'react'
+import { tv } from 'tailwind-variants'
 
 import { TabContext } from '@/components/context/TabProvider'
-import { tv } from 'tailwind-variants'
 
 const tabStyle = tv({
   base: 'cursor-pointer px-2 pb-1',
