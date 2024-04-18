@@ -52,7 +52,7 @@ export default function PopulationChart({ type }: Props) {
           : selectedElderlyPrefList
 
   return (
-    <ResponsiveContainer width='100%' aspect={2}>
+    <ResponsiveContainer width='100%' aspect={isSm ? 1.2 : 2}>
       <LineChart margin={isSm ? { right: 10 } : { left: 5, right: 50 }}>
         {selectedData.map((v, i) => (
           <Line

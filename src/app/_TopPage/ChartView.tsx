@@ -16,16 +16,16 @@ export default function ChartView({ className }: Props) {
     <div className={className}>
       <Tabs value='total'>
         <TabHeader align='center'>
-          <Tab value='total' className='text-sm lg:text-xl'>
+          <Tab value='total' className='text-sm sm:text-base lg:text-xl'>
             総人口
           </Tab>
-          <Tab value='young' className='text-sm lg:text-xl'>
+          <Tab value='young' className='text-sm sm:text-base lg:text-xl'>
             年少人口
           </Tab>
-          <Tab value='working' className='text-sm lg:text-xl'>
+          <Tab value='working' className='text-sm sm:text-base lg:text-xl'>
             生産年齢人口
           </Tab>
-          <Tab value='elderly' className='text-sm lg:text-xl'>
+          <Tab value='elderly' className='text-sm sm:text-base lg:text-xl'>
             老年人口
           </Tab>
         </TabHeader>
