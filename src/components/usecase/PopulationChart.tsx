@@ -23,7 +23,7 @@ const LINE_STROKE_COLORS = [
   '#f97316',
   '#06b6d4',
   '#3f6212',
-  '#fde047',
+  '#ca8a04',
   '#6b7280',
   '#ef4444',
   '#8b5cf6',
