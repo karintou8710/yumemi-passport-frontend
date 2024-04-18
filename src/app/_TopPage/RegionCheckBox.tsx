@@ -84,7 +84,7 @@ export default function RegionCheckBox({
 
   return (
     <div className={className}>
-      <h2 className='mb-4 text-2xl before:mr-2 before:rounded-full before:border-l-8 before:border-lime-400'>
+      <h2 className='mb-4 text-lg before:mr-2 before:rounded-full before:border-l-8 before:border-lime-400 sm:text-2xl'>
         {title}
       </h2>
       <div className='flex flex-wrap gap-x-6 gap-y-4'>

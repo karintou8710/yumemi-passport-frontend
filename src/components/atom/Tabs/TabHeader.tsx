@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 
 const tabHeaderStyle = tv({
-  base: 'flex gap-4',
+  base: 'flex flex-wrap gap-2 lg:gap-4',
   variants: {
     align: {
       left: 'justify-start',
