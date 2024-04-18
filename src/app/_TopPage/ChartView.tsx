@@ -40,13 +40,21 @@ export default function ChartView({ className }: Props) {
   return (
     <div className={className}>
       <Tabs value='total'>
-        <TabHeader>
-          <Tab value='total'>総人口</Tab>
-          <Tab value='young'>年少人口</Tab>
-          <Tab value='working'>生産年齢人口</Tab>
-          <Tab value='elderly'>老年人口</Tab>
+        <TabHeader align='center'>
+          <Tab value='total' className='text-xl'>
+            総人口
+          </Tab>
+          <Tab value='young' className='text-xl'>
+            年少人口
+          </Tab>
+          <Tab value='working' className='text-xl'>
+            生産年齢人口
+          </Tab>
+          <Tab value='elderly' className='text-xl'>
+            老年人口
+          </Tab>
         </TabHeader>
-        <TabBody>
+        <TabBody className='mt-8'>
           <TabContent value='total'>
             <ResponsiveContainer width='100%' aspect={2}>
               <LineChart margin={{ left: 5, right: 50 }}>
