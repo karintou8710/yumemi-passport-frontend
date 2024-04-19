@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# yumemi passport frontend
 
-## Getting Started
+## 概要
 
-First, run the development server:
+このレポジトリはゆめみパスポートのフロントエンド試験を実装したものです。  
+都道府県別に人口構成の比較をするWebアプリになります。
+
+## ローカルでの起動方法
+
+- パッケージマネージャーにはyarn v1を使用しています。
+- .env.sampleを参考に、.envを作成しください。起動・自動テストにはRESAS_API_KEYの登録が必要です。
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ yarn install
+$ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Git
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+作業ブランチは取り組むIssueを作成後、最新のdevelopから切ってください。ブランチ名は`feature/#<Issue Number>_...` で統一します。  
+ex）`feature/#1_initial_branch`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+コミットメッセージのPrefixは[Angular.js/DEVELOPERS.md](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type)を参考にしてください。  
+ex）`[feat] 人口構成のグラフ機能を追加`
 
-## Learn More
+## Lint, Format, Test
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# eslint + prettier のチェック
+$ yarn lint
+# eslint + prettier のコード修正
+$ yarn format
+# 自動テスト(RESAS API KEYの登録の必要あり）
+$ yarn test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 本番用ビルド
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+開発環境と本番環境ではキャッシュの挙動が異なるため、最終的なテストは本番環境でお願いします。
 
-## Deploy on Vercel
+```bash
+$ yarn build
+$ yarn start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 技術構成
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js:14 (App Router)
+- tailwindcss
+- recharts
+- recoil
