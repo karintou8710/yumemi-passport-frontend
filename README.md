@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# yumemi passport frontend
 
-## Getting Started
+## 概要
 
-First, run the development server:
+このレポジトリはゆめみパスポートのフロントエンド試験を実装したものです。  
+都道府県別に人口構成の比較をするWebアプリになります。
+
+## ローカルでの起動方法
+
+- パッケージマネージャーにはyarn v1を使用しています。
+- `.env.sample`を参考に、`.env`を作成しください。起動・自動テストにはRESAS_API_KEYの登録が必要です。
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ yarn install
+$ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 本番用ビルド
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+開発環境と本番環境ではキャッシュの挙動が異なるため、最終的なテストは本番環境でお願いします。
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+$ yarn build
+$ yarn start
+```
 
-## Learn More
+## Git
 
-To learn more about Next.js, take a look at the following resources:
+作業ブランチは取り組むIssueを作成後、最新のdevelopから切ってください。  
+ブランチ名は`feature/#<Issue Number>_...` で統一します。  
+ex）`feature/#1_initial_branch`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+コミットメッセージのPrefixは[Angular.js/DEVELOPERS.md](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type)を参考にしてください。  
+ex）`[feat] 人口構成のグラフ機能を追加`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Lint, Format, Test
 
-## Deploy on Vercel
+```bash
+# eslint + prettier のチェック
+$ yarn lint
+# eslint + prettier のコード修正
+$ yarn format
+# 自動テスト(RESAS API KEYの登録の必要あり）
+$ yarn test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## コンポーネント分割の粒度
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `components/atom`は特定のドメインを含まない純粋で再利用可能なコンポーネント
+- `components/usecase`は、特定のドメインを含むが複数のページで再利用されるコンポーネント
+- 特定のページでしか使用しないコンポーネントはapp配下の[Private Folder](https://nextjs.org/docs/app/building-your-application/routing/colocation#private-folders)を活用
+
+## 技術構成
+
+- Next.js:14 (App Router)
+- tailwindcss
+- recharts
+- recoil
