@@ -46,6 +46,7 @@ export default function RegionCheckBox({
         // async内ではError Boundariesが使用不可
         console.error(e)
         alert('予期しない例外が発生しました。再度リロードしてお試しください。') // 意図的にロード画面を解除しない
+        return
       }
       setSelectedPrefList((prev) => [
         ...prev,
@@ -78,6 +79,7 @@ export default function RegionCheckBox({
           // Event Handler内ではError Boundariesが使用不可
           console.error(e)
           alert('予期しない例外が発生しました。再度リロードしてお試しください。') // 意図的にロード画面を解除しない
+          return
         }
 
         setSelectedPrefList((prev) => [
