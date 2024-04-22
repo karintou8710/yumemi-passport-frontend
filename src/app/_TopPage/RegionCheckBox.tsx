@@ -6,7 +6,7 @@ import { useSetRecoilState } from 'recoil'
 import CheckBox from '@/components/atom/CheckBox'
 import { fetchResasPopulationCompositionAction } from '@/server/actions/prefecture'
 import { isLoadingState, selectedPrefListState } from '@/store'
-import { ResasPrefecture } from '@/types/api'
+import { ResasPrefecture, ResasResponsePopComp } from '@/types/api'
 
 type Props = {
   title: string
@@ -36,9 +36,17 @@ export default function RegionCheckBox({
       }
 
       setIsLoading(true)
-      const res = await fetchResasPopulationCompositionAction({
-        prefCode: defaultCheckedCode,
-      })
+      // Server Actionの例外時はError Boundariesを発火
+      let res: ResasResponsePopComp
+      try {
+        res = await fetchResasPopulationCompositionAction({
+          prefCode: defaultCheckedCode,
+        })
+      } catch (e) {
+        // async内ではError Boundariesが使用不可
+        console.error(e)
+        alert('予期しない例外が発生しました。再度リロードしてお試しください。') // 意図的にロード画面を解除しない
+      }
       setSelectedPrefList((prev) => [
         ...prev,
         {
@@ -61,9 +69,17 @@ export default function RegionCheckBox({
         setIsLoading(true)
 
         // Server Actionで県データを取得(API KEYを隠すため)
-        const res = await fetchResasPopulationCompositionAction({
-          prefCode: prefCode,
-        })
+        let res: ResasResponsePopComp
+        try {
+          res = await fetchResasPopulationCompositionAction({
+            prefCode: prefCode,
+          })
+        } catch (e) {
+          // Event Handler内ではError Boundariesが使用不可
+          console.error(e)
+          alert('予期しない例外が発生しました。再度リロードしてお試しください。') // 意図的にロード画面を解除しない
+        }
+
         setSelectedPrefList((prev) => [
           ...prev,
           {
